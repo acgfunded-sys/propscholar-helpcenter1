@@ -1,21 +1,15 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import cors from 'cors';
 
 const app = express();
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 
-const faqs = [
-  { question: "Is news trading allowed?", answer: "No, news trading is restricted..." },
-  { question: "What is daily drawdown?", answer: "It's calculated based on..." }
-];
-
-app.get('/faqs', (_req, res) => {
-  res.json(faqs);
+app.get('/', (_req: Request, res: Response) => {
+  res.send('Hello from API!');
 });
 
 app.listen(PORT, () => {
-  console.log(`✅ Server listening on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
-
